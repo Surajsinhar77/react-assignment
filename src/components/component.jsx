@@ -1,20 +1,3 @@
-/** Add fonts into your Next.js project:
-
-import { Chivo } from 'next/font/google'
-import { Rubik } from 'next/font/google'
-
-chivo({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-rubik({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-
-**/
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,34 +9,30 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
+import { Search } from "./Search";
+import { BellDot, Blocks, CalendarClock, ChevronDownIcon, Headset, MessageSquareMore, Settings, UserPlus, Users } from "lucide-react";
+import Logo from "./Logo";
+
 export function Sidebar({ children }) {
   return (
     <div className="flex min-h-screen w-full">
-      <aside className="inset-y-0 left-0 z-10 flex w-64 flex-col border-r bg-background transition-all duration-300 data-[collapsed=true]:w-14 data-[collapsed=true]:overflow-hidden">
+      <aside className="hidden inset-y-0 left-0 z-10 md:flex w-16 xl:w-56 flex-col border-r bg-background transition-all duration-300 data-[collapsed=true]:w-14 data-[collapsed=true]:overflow-hidden">
         <div className="flex h-16 shrink-0 items-center justify-between px-4">
           <Link
             to="#"
             className="flex items-center gap-2 text-lg font-semibold"
             prefetch={false}
           >
-            <MountainIcon className="h-6 w-6" />
+            {/* <MountainIcon className="h-6 w-6" /> */}
+            <Logo className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full data-[collapsed=true]:rotate-180"
-            onClick={() => {
-              document.body.dataset.collapsed =
-                document.body.dataset.collapsed === "true" ? "false" : "true";
-            }}
-          >
-            <ChevronRightIcon className="h-5 w-5 transition-transform" />
-            <span className="sr-only">Toggle sidebar</span>
-          </Button>
         </div>
-        <nav className="flex-1 overflow-auto px-2 py-4">
+        <nav className="flex-1 overflow-auto px-2 py-4 flex flex-col gap-7">
           <ul className="grid gap-1">
+            <h1 className="hidden xl:block text-gray-400 uppercase text-sm px-3">
+              Main Menu
+            </h1>
             <li>
               <Link
                 to="#"
@@ -61,7 +40,7 @@ export function Sidebar({ children }) {
                 prefetch={false}
               >
                 <HomeIcon className="h-5 w-5" />
-                <span className="truncate">Dashboard</span>
+                <span className="hidden xl:block truncate">Dashboard</span>
               </Link>
             </li>
             <li>
@@ -70,8 +49,8 @@ export function Sidebar({ children }) {
                 className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
                 prefetch={false}
               >
-                <PackageIcon className="h-5 w-5" />
-                <span className="truncate">Products</span>
+                <UserPlus className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Recruitment</span>
               </Link>
             </li>
             <li>
@@ -80,8 +59,8 @@ export function Sidebar({ children }) {
                 className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
                 prefetch={false}
               >
-                <ShoppingCartIcon className="h-5 w-5" />
-                <span className="truncate">Orders</span>
+                <CalendarClock className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Schedule</span>
               </Link>
             </li>
             <li>
@@ -90,8 +69,8 @@ export function Sidebar({ children }) {
                 className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
                 prefetch={false}
               >
-                <UsersIcon className="h-5 w-5" />
-                <span className="truncate">Customers</span>
+                <Users className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Employee</span>
               </Link>
             </li>
             <li>
@@ -100,8 +79,24 @@ export function Sidebar({ children }) {
                 className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
                 prefetch={false}
               >
-                <BarChartIcon className="h-5 w-5" />
-                <span className="truncate">Analytics</span>
+                <Blocks className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Department</span>
+              </Link>
+            </li>
+          </ul>
+
+          <ul className="grid gap-1">
+            <h1 className="hidden xl:block text-gray-400 uppercase text-sm px-3">
+              Other
+            </h1>
+            <li>
+              <Link
+                to="#"
+                className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
+                prefetch={false}
+              >
+                <Headset className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Support</span>
               </Link>
             </li>
             <li>
@@ -110,15 +105,15 @@ export function Sidebar({ children }) {
                 className="flex h-10 w-full items-center justify-start gap-2 rounded-md px-3 text-sm font-medium transition-colors hover:bg-muted"
                 prefetch={false}
               >
-                <SettingsIcon className="h-5 w-5" />
-                <span className="truncate">Settings</span>
+                <Settings  className="h-5 w-5" />
+                <span className="hidden xl:block truncate">Setting</span>
               </Link>
             </li>
           </ul>
         </nav>
       </aside>
       <div className="flex flex-1 flex-col">
-        <header className="sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between bg-background ml-10 md:pr-10">
+        <header className="sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between bg-background lg:ml-10 pr-10">
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
@@ -137,27 +132,44 @@ export function Sidebar({ children }) {
               className="flex items-center gap-2 text-lg font-semibold"
               prefetch={false}
             >
-              <MountainIcon className="h-6 w-6" />
-              <span className="sr-only">Acme Inc</span>
+              <Search />
             </Link>
           </div>
+
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6 px-5">
+              <span>
+                <BellDot />
+              </span>
+              <span>
+                <MessageSquareMore />
+              </span>
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="overflow-hidden rounded-full"
-                >
-                  <img
-                    src="/placeholder.svg"
-                    width={36}
-                    height={36}
-                    alt="Avatar"
+                <>
+                  <Button
+                    variant="outline"
+                    size="icon"
                     className="overflow-hidden rounded-full"
-                    style={{ aspectRatio: "36/36", objectFit: "cover" }}
-                  />
-                </Button>
+                  >
+                    <img
+                      src="https://github.com/shadcn.png"
+                      width={36}
+                      height={36}
+                      alt="Avatar"
+                      className="overflow-hidden rounded-full"
+                      style={{ aspectRatio: "36/36", objectFit: "cover" }}
+                    />
+                  </Button>
+
+                  <span className="text-sm flex items-center">
+                    <span className="hidden lg:block"> User Name </span>
+                    <span>
+                      <ChevronDownIcon className="h-4 w-4" />
+                    </span>
+                  </span>
+                </>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -170,8 +182,8 @@ export function Sidebar({ children }) {
             </DropdownMenu>
           </div>
         </header>
-        <h1 className="bg-gray-300 h-[0.5px] ml-10"></h1>
-        <main >{children}</main>
+        <h1 className="bg-gray-200 h-[0.5px] lg:ml-10"></h1>
+        <main className="px-7 py-4">{children}</main>
       </div>
     </div>
   );
