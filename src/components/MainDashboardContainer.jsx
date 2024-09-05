@@ -109,8 +109,8 @@ export default function MainDashboardContainer() {
 
         <div className=" div-two grid col-span-6 md:col-span-6 lg:grid lg:col-span-2 gap-5 md:flex">
 
-          <div className="part-one border col-span-6 md:col-span-2 lg:col-span-6  rounded-xl flex flex-col justify-between gap-4">
-            <div className="header py-4 text-lg font-medium px-7 border-b ">
+          <div className="part-one border col-span-6 md:col-span-2 lg:col-span-6  rounded-xl flex flex-col justify-between gap-4 card-bg-body">
+            <div className="header py-4 text-lg font-medium px-7 border-b border-gray-800 card-bg rounded-xl">
               <h1>Recently Activity</h1>
             </div>
 
@@ -137,7 +137,7 @@ export default function MainDashboardContainer() {
               </span>
 
               <span>
-                <Button>See All Activity</Button>
+                <Button className="bg-red-600 hover:bg-red-500">See All Activity</Button>
               </span>
             </div>
           </div>
